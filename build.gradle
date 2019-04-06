@@ -1,0 +1,52 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.2.RELEASE'
+    id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.fn'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation ('org.springframework.boot:spring-boot-starter-web')
+            {
+                exclude group: 'org.apache.logging.log4j', module: 'log4j-to-slf4j'
+            }
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    compile('org.apache.storm:storm-core:1.2.2')
+            {
+//                exclude group: 'javax.servlet', module: 'servlet-api'
+//                exclude group: 'org.apache.logging.log4j', module: 'log4j-slf4j-impl'
+//                exclude group: 'org.apache.logging.log4j', module: 'log4j-1.2-api'
+//                exclude group: 'org.apache.logging.log4j', module: 'log4j-web'
+//                exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+//                exclude group: 'ring-cors', module: 'ring-cors'
+            }
+
+    implementation group: 'com.alibaba', name: 'fastjson', version: '1.2.56'
+
+    implementation group: 'com.codahale.metrics', name: 'metrics-core', version: '3.0.2'
+
+    implementation group: 'org.apache.kafka', name: 'kafka_2.12', version: '2.2.0'
+    implementation group: 'org.apache.kafka', name: 'kafka-streams', version: '2.2.0'
+    implementation group: 'org.apache.kafka', name: 'kafka-clients', version: '2.2.0'
+
+//postgres
+    implementation "org.postgresql:postgresql:42.2.2"
+
+//mybatis
+//    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.0.0'
+
+    implementation "org.apache.commons:commons-lang3:3.4"
+
+// p6spy
+    implementation "p6spy:p6spy:3.0.0"
+
+}
